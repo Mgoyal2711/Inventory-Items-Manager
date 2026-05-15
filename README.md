@@ -2,8 +2,6 @@
 
 A production-ready full-stack inventory management application with a modern React dashboard and a .NET 8 REST API backed by SQLite.
 
-> **Note:** Add a screenshot at `docs/screenshot.png` after running the app locally.
-
 ## Project Overview
 
 Manage product inventory with real-time stock status badges, search, sorting, pagination, and full CRUD operations. The backend enforces validation rules and unique SKUs; the frontend provides a polished SaaS-style dashboard with dark mode support.
@@ -38,31 +36,6 @@ Manage product inventory with real-time stock status badges, search, sorting, pa
 | Frontend | React 19, Vite, Tailwind CSS, Axios, React Hook Form, React Hot Toast, Lucide React |
 | Backend | .NET 8, ASP.NET Core Web API, Entity Framework Core, SQLite |
 | DevOps | Docker, Docker Compose |
-
-## Folder Structure
-
-```
-inventory-items-manager/
-├── backend/
-│   ├── Dockerfile
-│   └── InventoryApi/
-│       ├── Controllers/      # REST API endpoints
-│       ├── Services/         # Business logic
-│       ├── Models/           # EF entities
-│       ├── DTOs/             # Request/response models
-│       ├── Data/             # DbContext
-│       └── Program.cs
-├── frontend/
-│   ├── Dockerfile
-│   ├── src/
-│   │   ├── components/     # UI components
-│   │   ├── hooks/            # useInventory hook
-│   │   ├── services/         # Axios API layer
-│   │   └── utils/            # Status & cache helpers
-│   └── package.json
-├── docker-compose.yml
-└── README.md
-```
 
 ## Prerequisites
 
@@ -137,25 +110,6 @@ Copy `frontend/.env.example` to `frontend/.env` to customize.
 | `page` | `1` | Page number |
 | `pageSize` | `10` | Items per page (max 100) |
 
-### Example: Create item
-
-```bash
-curl -X POST http://localhost:5000/api/items \
-  -H "Content-Type: application/json" \
-  -d '{"name":"Wireless Mouse","sku":"WM-001","quantity":5}'
-```
-
-Response (`201 Created`):
-
-```json
-{
-  "id": 4,
-  "name": "Wireless Mouse",
-  "sku": "WM-001",
-  "quantity": 5,
-  "stockStatus": "Low Stock"
-}
-```
 
 ### Validation Rules
 
@@ -163,7 +117,3 @@ Response (`201 Created`):
 - SKU: required, unique (stored uppercase)
 - Quantity: required, cannot be negative
 
-
-## License
-
-MIT
